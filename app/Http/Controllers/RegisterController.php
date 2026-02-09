@@ -26,7 +26,7 @@ class RegisterController extends Controller
 
 
         if(!$usernameExists){ 
-            $userID = DB::table('users_tb')->insert([
+            DB::table('users_tb')->insert([
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
             ]);

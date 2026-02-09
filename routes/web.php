@@ -12,6 +12,9 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'OpenLoginPage']);
 Route::post('/login', [LoginController::class, 'LoginCheck']);
 
+Route::get('/dashboard', [LoginController::class, "OpenDashboardPage"]);
+
 
 Route::get('/register', [RegisterController::class, "OpenRegistrationPage"]);
 Route::post('/register', [RegisterController::class, 'RegisterAccount']);
+
