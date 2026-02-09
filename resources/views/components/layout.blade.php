@@ -9,6 +9,31 @@
 
 <body class="my-4 grid justify-center">
     
+
+
+    <div class="mb-4">
+        <ul class="border-2 flex py-2 justify-center">
+            @if(!session('username'))
+                <li class="px-2"><a class="hover:font-bold" href="/">Homepage</a></li>
+            @endif
+
+            @if(!session('username'))
+                <li class="px-2"><a class="hover:font-bold" href="/login">Login</a></li>
+            @endif
+            
+            @if(session('username'))
+                <li class="px-2"><a class="hover:font-bold" href="/dashboard">Dashboard</a></li>
+            @endif
+
+            @if(session('username'))
+                <li class="px-2"><a class="hover:font-bold" href="/logout">Logout</a></li>
+            @endif
+            
+            @if(!session('username'))
+                <li class="px-2"><a class="hover:font-bold" href="/register">Register</a></li>
+            @endif
+        </ul>
+    </div>
     
 
     <div class="border-2 p-4">
