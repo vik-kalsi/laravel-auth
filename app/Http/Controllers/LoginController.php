@@ -22,14 +22,16 @@ class LoginController extends Controller
 
 
         $user = DB::table('users_tb')->where('username', $request->username)->first();
-
-        if(!$user || !Hash::check($request->password, $user->password)){
+                
+        if($user && Hash::check($request->password, $user->password)){
+            Auth::loginUsingId($user->id);
+            $request->session()->regenerate();
+            return redirect()->action([LoginController::class, 'OpenDashboardPage']);
+        
+        } else {
             return redirect()->action([LoginController::class, 'OpenLoginPage'])
             ->withErrors(['loginIncorrect' => "Invalid username or password"])
             ->withInput();
-        
-        } else {
-            return redirect()->action([LoginController::class, 'OpenDashboardPage']);
         }
     }
 
